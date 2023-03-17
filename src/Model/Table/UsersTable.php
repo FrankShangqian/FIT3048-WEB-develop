@@ -98,5 +98,5 @@ class UsersTable extends Table
             ->allowEmptyString('user_address');
 
         return $validator;
-    }
+        }
 }
