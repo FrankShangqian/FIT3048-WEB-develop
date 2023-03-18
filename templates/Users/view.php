@@ -35,12 +35,8 @@
                     <td><?= h($user->user_phone) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('User Email') ?></th>
-                    <td><?= h($user->user_email) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('User Password') ?></th>
-                    <td><?= h($user->user_password) ?></td>
+                    <th><?= __('Email') ?></th>
+                    <td><?= h($user->email) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('User Type') ?></th>

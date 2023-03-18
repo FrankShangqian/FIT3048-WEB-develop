@@ -26,8 +26,8 @@
                     echo $this->Form->control('user_lname');
                     echo $this->Form->control('user_prefername');
                     echo $this->Form->control('user_phone');
-                    echo $this->Form->control('user_email');
-                    echo $this->Form->control('user_password');
+                    echo $this->Form->control('email');
+                    echo $this->Form->control('password');
                     echo $this->Form->control('user_type');
                     echo $this->Form->control('user_address');
                 ?>
