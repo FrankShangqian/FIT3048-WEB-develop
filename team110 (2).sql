@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2023 at 04:23 PM
+-- Generation Time: Mar 19, 2023 at 06:43 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -76,7 +76,7 @@ CREATE TABLE `inspections` (
 --
 
 INSERT INTO `inspections` (`inspection_id`, `inspection_datetime`, `inspection_description`, `user_id`, `apartment_id`) VALUES
-(10000, '2023-07-18', 'sapien. Nunc pulvinar arcu et pede. Nunc sed orci lobortis', 1, 1001),
+(10000, '2023-07-18', 'sapien. Nunc pulvinar arcu et pede. Nunc sed orci lobortis', 1, 1000),
 (10001, '2022-12-27', 'lacinia mattis. Integer eu lacus. Quisque imperdiet, erat nonummy ultricies', 1, 1001),
 (10002, '2023-01-22', 'pede blandit congue. In scelerisque scelerisque dui. Suspendisse ac metus', 1, 1002),
 (10003, '2022-07-09', 'a mi fringilla mi lacinia mattis. Integer eu lacus. Quisque', 1, 1003),
@@ -94,8 +94,8 @@ CREATE TABLE `users` (
   `user_lname` varchar(50) NOT NULL,
   `user_prefername` varchar(50) DEFAULT NULL,
   `user_phone` varchar(100) DEFAULT NULL,
-  `user_email` varchar(50) NOT NULL,
-  `user_password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `user_type` varchar(20) DEFAULT 'contractor',
   `user_image` longblob DEFAULT NULL,
   `user_address` varchar(255) DEFAULT NULL
@@ -105,6 +105,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
+INSERT INTO `users` (`user_id`, `user_fname`, `user_lname`, `user_prefername`, `user_phone`, `email`, `password`, `user_type`, `user_image`, `user_address`) VALUES
+(1, 'after', 'apartment_id', '', '+61452580124', 'root@example.com', '$2y$10$CZPdURVLQjq4ft9WavMMoO2Otg2gToTgiDHuApIRKoiivMrqH.TBK', 'contractor', NULL, 'Unit 1202 6 St Kilda Rd');
 
 --
 -- Indexes for dumped tables
@@ -157,7 +159,7 @@ ALTER TABLE `inspections`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables

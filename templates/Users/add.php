@@ -23,7 +23,7 @@
                     echo $this->Form->control('user_phone');
                     echo $this->Form->control('email');
                     echo $this->Form->control('password');
-                    echo $this->Form->control('user_type');
+                    echo $this->Form->control('user_type', ['options' => ['admin' => 'Admin', 'contractor' => 'Contractor']]);
                     echo $this->Form->control('user_address');
                 ?>
             </fieldset>
