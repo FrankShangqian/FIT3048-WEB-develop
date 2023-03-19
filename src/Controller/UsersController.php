@@ -48,7 +48,6 @@ class UsersController extends AppController
      */
     public function add()
     {
-
         $user = $this->Users->newEmptyEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
@@ -61,6 +60,7 @@ class UsersController extends AppController
         }
         $this->set(compact('user'));
     }
+
 
     /**
      * Edit method
@@ -98,18 +98,15 @@ class UsersController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
-        try{
-            $this->Authorization->authorize($user);
-            if ($this->Users->delete($user)) {
-                $this->Flash->success(__('The user has been deleted.'));
-            } else {
-                $this->Flash->error(__('The user could not be deleted. Please, try again.'));
-            }
-        }catch(ForbiddenException $ex){
-            $this->Flash->error('You are not allowed to delete this user');
+        if ($this->Users->delete($user)) {
+            $this->Flash->success(__('The user has been deleted.'));
+        } else {
+            $this->Flash->error(__('The user could not be deleted. Please, try again.'));
         }
+
         return $this->redirect(['action' => 'index']);
     }
+
     public function beforeFilter(\Cake\Event\EventInterface $event)
     {
         parent::beforeFilter($event);
