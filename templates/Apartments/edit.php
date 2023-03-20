@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\Apartment $apartment
  */
 ?>
-<div class="row">
+<div class="col-lg-6" style="float:none;margin:auto;">
     <aside class="column">
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
