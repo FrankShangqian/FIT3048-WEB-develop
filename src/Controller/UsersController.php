@@ -21,6 +21,8 @@ class UsersController extends AppController
 
     public function index()
     {
+        //$this->Authorization->authorize(user_type= Admin);
+
         $users = $this->paginate($this->Users);
         $this->set(compact('users'));
     }
@@ -50,12 +52,32 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEmptyEntity();
         if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+            $formData = $this->request->getData();
+            // process the file
+            $image_file = $this->request->getData('user_image');
+            unset($formData['user_image']);
+            $user = $this->Users->patchEntity($user, $formData);;
+
+            if (!$user->getErrors()) {
+
+                $name = $image_file->getClientFilename();
+                $targetPath = WWW_ROOT . 'img' . DS . $name;
+                if ($name) {
+                    $image_file->moveTo($targetPath);
+                    $user->user_image = $name;
+                }
+
+                if ($this->Users->save($user)) {
+                    $this->Flash->success(__('The user has been saved.'));
+
+                    return $this->redirect(['action' => 'index']);
+                }
+
             }
+
+
+
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
         $this->set(compact('user'));
@@ -112,7 +134,7 @@ class UsersController extends AppController
         parent::beforeFilter($event);
         // Configure the login action to not require authentication, preventing
         // the infinite redirect loop issue
-        $this->Authentication->addUnauthenticatedActions(['login','add']);
+        $this->Authentication->addUnauthenticatedActions(['login', 'add']);
     }
 
     public function login()
@@ -137,13 +159,14 @@ class UsersController extends AppController
     }
 
     public function logout()
-{
-    
-    $result = $this->Authentication->getResult();
-    // regardless of POST or GET, redirect if user is logged in
-    if ($result && $result->isValid()) {
-        $this->Authentication->logout();
-        return $this->redirect(['controller' => 'Users', 'action' => 'login']);
+    {
+
+        $result = $this->Authentication->getResult();
+        // regardless of POST or GET, redirect if user is logged in
+        if ($result && $result->isValid()) {
+            $this->Authentication->logout();
+            return $this->redirect(['controller' => 'Users', 'action' => 'login']);
+        }
     }
-}
+
 }

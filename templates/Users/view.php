@@ -47,6 +47,10 @@
                     <td><?= h($user->user_address) ?></td>
                 </tr>
                 <tr>
+                    <th><?= __('User Image') ?></th>
+                    <td><?= $this->Html->image($user->user_image) ?></td>
+                </tr>
+                <tr>
                     <th><?= __('User Id') ?></th>
                     <td><?= $this->Number->format($user->user_id) ?></td>
                 </tr>

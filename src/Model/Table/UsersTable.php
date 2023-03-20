@@ -89,12 +89,24 @@ class UsersTable extends Table
             ->allowEmptyString('user_type');
 
         $validator
-            ->allowEmptyFile('user_image');
-
-        $validator
             ->scalar('user_address')
             ->maxLength('user_address', 255)
             ->allowEmptyString('user_address');
+
+        $validator
+            ->allowEmptyFile('user_image')
+            ->add('user_image',[
+                'mimeType'=>[
+                    'rule' => ['mimeType', ['image/jpg','image/png','image/jpeg']],
+                    'message' =>'Please upload only jpg and png.'
+                ],
+                'fileSize' =>[
+                    'rule'=>['fileSize','<=','10MB'],
+                    'message'=>'Image file size must be less than 10MB.',
+                ],
+
+
+            ]);
 
         return $validator;
     }

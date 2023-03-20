@@ -38,7 +38,7 @@
     <!-- * * Tip * * You can use text or an image for your navbar brand.-->
     <!-- * * * * * * When using an image, we recommend the SVG format.-->
     <!-- * * * * * * Dimensions: Maximum height: 32px, maximum width: 240px-->
-    <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="$this->Url->build('/home')">MONO Admin & contractor</a>
+    <a class="navbar-brand pe-3 ps-4 ps-lg-2" >MONO Admin & contractor</a>
     <!-- Navbar Search Input-->
     <!-- * * Note: * * Visible only on and above the lg breakpoint-->
     <form class="form-inline me-auto d-none d-lg-block me-3">
@@ -216,7 +216,13 @@
                     <div class="sidenav-footer-subtitle">Logged in as:</div>
                     <div class="sidenav-footer-title">contractor</div>
                 </div>
+
             </div>
+                    <?= $this->Html->link(
+                        '<i class="fa fa-power-off icon"></i> Logout',
+                        ['controller' => 'users', 'action' => 'logout'],
+                        ['class' => 'dropdown-item', 'escape' => false]
+                    );?>
         </nav>
     </div>
     <div id="layoutSidenav_content">

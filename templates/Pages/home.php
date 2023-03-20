@@ -6082,7 +6082,7 @@ endif;
 															<span class="elementor-icon-list-text">Be a Partner</span>
 														</li>
 														<li class="elementor-icon-list-item elementor-inline-item">
-															<a href="<?= $this->Url->build('/users') ?>">
+															<a href="<?= $this->Url->build('/inspections') ?>">
 																<span class="elementor-icon-list-text">Team Member</span>
 															</a>
 														</li>
