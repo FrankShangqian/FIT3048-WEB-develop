@@ -22,7 +22,6 @@ class ImagesController extends AppController
             'contain' => ['Inspections', 'Apartments'],
         ];
         $images = $this->paginate($this->Images);
-
         $this->set(compact('images'));
     }
 
