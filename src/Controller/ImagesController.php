@@ -49,13 +49,12 @@ class ImagesController extends AppController
     public function add()
     {
         $image = $this->Images->newEmptyEntity();
-
         if ($this->request->is('post')) {
             $formData = $this->request->getData();
             // process the file
             $image_file = $this->request->getData('image_photo');
             unset($formData['image_photo']);
-            $image = $this->Users->patchEntity($image, $formData);;
+            $image = $this->Images->patchEntity($image, $formData);;
             if (!$image->getErrors()) {
                 $name = $image_file->getClientFilename();
                 $targetPath = WWW_ROOT . 'img' . DS . $name;
@@ -63,7 +62,7 @@ class ImagesController extends AppController
                     $image_file->moveTo($targetPath);
                     $image->image_photo = $name;
                 }
-                if ($this->image->save($image)) {
+                if ($this->Images->save($image)) {
                     $this->Flash->success(__('The inspection image has been saved.'));
                     return $this->redirect(['action' => 'index']);
                 }
@@ -73,8 +72,6 @@ class ImagesController extends AppController
         $inspections = $this->Images->Inspections->find('list', ['limit' => 200])->all();
         $apartments = $this->Images->Apartments->find('list', ['limit' => 200])->all();
         $this->set(compact('image', 'inspections', 'apartments'));
-
-
     }
 
     /**

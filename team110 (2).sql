@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2023 at 06:43 AM
+-- Generation Time: Mar 21, 2023 at 09:52 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -52,10 +52,17 @@ INSERT INTO `apartments` (`apartment_id`, `apartment_address`, `apartment_type`)
 
 CREATE TABLE `images` (
   `image_id` int(11) NOT NULL,
-  `image_photo` longblob NOT NULL,
+  `image_photo` varchar(255) NOT NULL,
   `inspection_id` int(11) NOT NULL,
   `apartment_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `images`
+--
+
+INSERT INTO `images` (`image_id`, `image_photo`, `inspection_id`, `apartment_id`) VALUES
+(0, 'Screenshot 2023-03-21 194823.png', 10000, 1000);
 
 -- --------------------------------------------------------
 
@@ -97,7 +104,7 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `user_type` varchar(20) DEFAULT 'contractor',
-  `user_image` longblob DEFAULT NULL,
+  `user_image` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `user_address` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -106,7 +113,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_fname`, `user_lname`, `user_prefername`, `user_phone`, `email`, `password`, `user_type`, `user_image`, `user_address`) VALUES
-(1, 'after', 'apartment_id', '', '+61452580124', 'root@example.com', '$2y$10$CZPdURVLQjq4ft9WavMMoO2Otg2gToTgiDHuApIRKoiivMrqH.TBK', 'contractor', NULL, 'Unit 1202 6 St Kilda Rd');
+(1, 'after', 'apartment_id', '', '+61452580124', 'root@example.com', '$2y$10$CZPdURVLQjq4ft9WavMMoO2Otg2gToTgiDHuApIRKoiivMrqH.TBK', 'contractor', NULL, 'Unit 1202 6 St Kilda Rd'),
+(18, 'after', 'apartment_id', '', '+61452580124', 'root1@example.com', '$2y$10$Ocyq7kgSwTvs2vePD1L5D.oqlqYLFSsXQRBsUi8s6YRG/agOP0r0y', 'admin', NULL, 'Unit 1202 6 St Kilda Rd'),
+(19, 'adsfasdgagagg', 'Qin', '', '+61452580124', 'qr1403525394@outlook.com', '$2y$10$vA2tmBeZxM3oSlY83lI5UeVp22tguH/s7lyfUUQ0h5iJ1t56Y1nau', 'contractor', NULL, 'Unit 1202 6 St Kilda Rd'),
+(20, 'Rui', 'Qin', '', '+61452580124', 'asdfasdf@outlook.com', '$2y$10$sTjXhh4sYE4lcIRoremHbu58xIr4Y0yAQ8.B8BuOrOFtedoszqqra', 'contractor', NULL, 'Unit 1202 6 St Kilda Rd'),
+(25, 'after', 'apartment_id', '', '+61452580124', 'asdfasdfasads@outlook.com', '$2y$10$YtBRYhNr8D/19PZW61YCNufb8S1ruvZidmS4AM81I26Isgd2O5VRe', 'contractor', 'Screenshot 2023-03-21 194823.png', 'Unit 1202 6 St Kilda Rd');
 
 --
 -- Indexes for dumped tables
@@ -147,19 +158,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `apartments`
 --
 ALTER TABLE `apartments`
-  MODIFY `apartment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1005;
+  MODIFY `apartment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1007;
 
 --
 -- AUTO_INCREMENT for table `inspections`
 --
 ALTER TABLE `inspections`
-  MODIFY `inspection_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10006;
+  MODIFY `inspection_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10007;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Constraints for dumped tables

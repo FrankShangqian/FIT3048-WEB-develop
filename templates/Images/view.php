@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Image $image
@@ -19,6 +20,10 @@
             <h3><?= h($image->image_id) ?></h3>
             <table>
                 <tr>
+                    <th><?= __('Image Id') ?></th>
+                    <td><?= $this->Number->format($image->image_id) ?></td>
+                </tr>
+                <tr>
                     <th><?= __('Inspection') ?></th>
                     <td><?= $image->has('inspection') ? $this->Html->link($image->inspection->inspection_id, ['controller' => 'Inspections', 'action' => 'view', $image->inspection->inspection_id]) : '' ?></td>
                 </tr>
@@ -27,8 +32,8 @@
                     <td><?= $image->has('apartment') ? $this->Html->link($image->apartment->apartment_id, ['controller' => 'Apartments', 'action' => 'view', $image->apartment->apartment_id]) : '' ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Image Id') ?></th>
-                    <td><?= $this->Number->format($image->image_id) ?></td>
+                    <th><?= __('Image') ?></th>
+                    <td><?= $this->Html->image($image->image_photo) ?></td>
                 </tr>
             </table>
         </div>

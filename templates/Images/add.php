@@ -25,7 +25,7 @@
             <div class="side-nav">
                 <?= $this->Html->link(__('Back'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
             </div>
-            <?= $this->Form->create($image) ?>
+            <?= $this->Form->create($image, ['type' => 'file']) ?>
             <fieldset>
                 <legend><?= __('Add Image') ?></legend>
                 <div class="row gx-3 mb-3">
