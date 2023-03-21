@@ -44,6 +44,8 @@ use Authorization\Middleware\AuthorizationMiddleware;
 use Authorization\Policy\OrmResolver;
 
 
+
+
 /**
  * Application setup class.
  *
@@ -172,6 +174,7 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
         $this->addOptionalPlugin('Cake/Repl');
         $this->addOptionalPlugin('Bake');
         $this->addPlugin('Migrations');
+        $this->addPlugin('Authorization');
         // Load more plugins here
     }
 

@@ -178,7 +178,12 @@
                                 User list
                                 <span class="badge bg-primary-soft text-primary ms-auto">Updated</span>
                             </a>
-                            <a class="nav-link" href="<?= $this->Url->build('/users/add') ?>">add new user</a>
+                            <a class="nav-link" href="<?php  if ($this->Identity->get('user_type')== 'admin'){
+                                echo $this->Url->build('/users/add');
+
+                            }
+                            ?>"> add new user </a>
+
                         </nav>
                     </div>
                     <!-- Sidenav Heading (Custom)-->
@@ -214,7 +219,7 @@
             <div class="sidenav-footer">
                 <div class="sidenav-footer-content">
                     <div class="sidenav-footer-subtitle">Logged in as:</div>
-                    <div class="sidenav-footer-title">contractor</div>
+                    <div > <?= $this->Identity->get('user_type',['class'=>"sidenav-footer-title"]) ?></div>
                 </div>
 
             </div>

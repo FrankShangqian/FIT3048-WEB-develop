@@ -63,9 +63,17 @@ class ImagesTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->requirePresence('image_photo', 'create')
-            ->notEmptyFile('image_photo');
-
+            ->allowEmptyFile('image_photo')
+            ->add('image_photo',[
+                'mimeType'=>[
+                    'rule' => ['mimeType', ['image/jpg','image/png','image/jpeg']],
+                    'message' =>'Please upload only jpg and png.'
+                ],
+                'fileSize' =>[
+                    'rule'=>['fileSize','<=','10MB'],
+                    'message'=>'Image file size must be less than 10MB.',
+                ],
+            ]);
         $validator
             ->integer('inspection_id')
             ->notEmptyString('inspection_id');
@@ -73,6 +81,8 @@ class ImagesTable extends Table
         $validator
             ->integer('apartment_id')
             ->notEmptyString('apartment_id');
+
+
 
         return $validator;
     }

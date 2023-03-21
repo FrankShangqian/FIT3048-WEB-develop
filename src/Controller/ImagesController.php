@@ -49,18 +49,32 @@ class ImagesController extends AppController
     public function add()
     {
         $image = $this->Images->newEmptyEntity();
-        if ($this->request->is('post')) {
-            $image = $this->Images->patchEntity($image, $this->request->getData());
-            if ($this->Images->save($image)) {
-                $this->Flash->success(__('The image has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+        if ($this->request->is('post')) {
+            $formData = $this->request->getData();
+            // process the file
+            $image_file = $this->request->getData('image_photo');
+            unset($formData['image_photo']);
+            $image = $this->Users->patchEntity($image, $formData);;
+            if (!$image->getErrors()) {
+                $name = $image_file->getClientFilename();
+                $targetPath = WWW_ROOT . 'img' . DS . $name;
+                if ($name) {
+                    $image_file->moveTo($targetPath);
+                    $image->image_photo = $name;
+                }
+                if ($this->image->save($image)) {
+                    $this->Flash->success(__('The inspection image has been saved.'));
+                    return $this->redirect(['action' => 'index']);
+                }
             }
-            $this->Flash->error(__('The image could not be saved. Please, try again.'));
+            $this->Flash->error(__('The inspection image could not be saved. Please, try again.'));
         }
         $inspections = $this->Images->Inspections->find('list', ['limit' => 200])->all();
         $apartments = $this->Images->Apartments->find('list', ['limit' => 200])->all();
         $this->set(compact('image', 'inspections', 'apartments'));
+
+
     }
 
     /**

@@ -37,8 +37,12 @@
                             <td><?= h($user->user_address) ?></td>
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['action' => 'view', $user->user_id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->user_id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->user_id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->user_id)]) ?>
+                                <?php if ($this->Identity->get('email') == $user->email || $this->Identity->get('user_type')== 'admin') {
+                                    echo $this->Html->link(__('Edit'), ['action' => 'edit', $user->user_id], ['class' => 'badge bg-yellow-soft text-yellow']);
+                                    echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->user_id],
+                                        ['confirm' => __('Are you sure you want to delete it ?', $user->user_id), 'class' => 'badge bg-gray-200 text-black']);
+                                }
+                                ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>

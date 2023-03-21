@@ -52,32 +52,23 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEmptyEntity();
         if ($this->request->is('post')) {
-
             $formData = $this->request->getData();
             // process the file
             $image_file = $this->request->getData('user_image');
             unset($formData['user_image']);
             $user = $this->Users->patchEntity($user, $formData);;
-
             if (!$user->getErrors()) {
-
                 $name = $image_file->getClientFilename();
                 $targetPath = WWW_ROOT . 'img' . DS . $name;
                 if ($name) {
                     $image_file->moveTo($targetPath);
                     $user->user_image = $name;
                 }
-
                 if ($this->Users->save($user)) {
                     $this->Flash->success(__('The user has been saved.'));
-
                     return $this->redirect(['action' => 'index']);
                 }
-
             }
-
-
-
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
         $this->set(compact('user'));
@@ -96,7 +87,6 @@ class UsersController extends AppController
         $user = $this->Users->get($id, [
             'contain' => [],
         ]);
-        $this->Authorization->authorize($user);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {

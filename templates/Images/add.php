@@ -32,6 +32,7 @@
                 <?php
                     echo $this->Form->control('inspection_id', ['options' => $inspections, 'class' => 'form-control col-md-6', 'label' => 'Inspection ID']);
                     echo $this->Form->control('apartment_id', ['options' => $apartments, 'class' => 'form-control col-md-6', 'label' => 'Apartment ID']);
+                    echo $this->Form->control('image_photo', ['type' => 'file', 'class' => 'form-control', 'label' => 'Address']);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>
