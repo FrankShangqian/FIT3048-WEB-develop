@@ -63,18 +63,8 @@
             </div>
         </li>
         <!-- Alerts Dropdown-->
-        <li class="nav-item dropdown no-caret d-none d-sm-block me-3 dropdown-notifications">
-            <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownAlerts" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="bell"></i></a>
-            <div class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownAlerts">
-                <h6 class="dropdown-header dropdown-notifications-header">
-                    <i class="me-2" data-feather="bell"></i>
-                    Alerts Center
-                </h6>
 
-                <a class="dropdown-item dropdown-notifications-footer" href="#!">View All Alerts</a>
-            </div>
-        </li>
-        <!-- Messages Dropdown-->
+        <!-- Messages Dropdown
         <li class="nav-item dropdown no-caret d-none d-sm-block me-3 dropdown-notifications">
             <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="mail"></i></a>
             <div class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownMessages">
@@ -82,7 +72,7 @@
                     <i class="me-2" data-feather="mail"></i>
                     Message Center
                 </h6>
-                <!-- Example Message 1  -->
+              // Example Message 1
                 <a class="dropdown-item dropdown-notifications-item" href="#!">
                     <img class="dropdown-notifications-item-img" src="assets/img/illustrations/profiles/profile-2.png" />
                     <div class="dropdown-notifications-item-content">
@@ -90,7 +80,7 @@
                         <div class="dropdown-notifications-item-content-details">Thomas Wilcox · 58m</div>
                     </div>
                 </a>
-                <!-- Example Message 2-->
+                //Example Message 2
                 <a class="dropdown-item dropdown-notifications-item" href="#!">
                     <img class="dropdown-notifications-item-img" src="assets/img/illustrations/profiles/profile-3.png" />
                     <div class="dropdown-notifications-item-content">
@@ -98,7 +88,7 @@
                         <div class="dropdown-notifications-item-content-details">Emily Fowler · 2d</div>
                     </div>
                 </a>
-                <!-- Example Message 3-->
+             //Example Message 3
                 <a class="dropdown-item dropdown-notifications-item" href="#!">
                     <img class="dropdown-notifications-item-img" src="assets/img/illustrations/profiles/profile-4.png" />
                     <div class="dropdown-notifications-item-content">
@@ -106,7 +96,7 @@
                         <div class="dropdown-notifications-item-content-details">Marshall Rosencrantz · 3d</div>
                     </div>
                 </a>
-                <!-- Example Message 4-->
+                // Example Message 4
                 <a class="dropdown-item dropdown-notifications-item" href="#!">
                     <img class="dropdown-notifications-item-img" src="assets/img/illustrations/profiles/profile-5.png" />
                     <div class="dropdown-notifications-item-content">
@@ -114,29 +104,37 @@
                         <div class="dropdown-notifications-item-content-details">Colby Newton · 3d</div>
                     </div>
                 </a>
-                <!-- Footer Link-->
+                // Footer Link
                 <a class="dropdown-item dropdown-notifications-footer" href="#!">Read All Messages</a>
             </div>
         </li>
+        -->
         <!-- User Dropdown-->
         <li class="nav-item dropdown no-caret dropdown-user me-3 me-lg-4">
-            <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="assets/img/illustrations/profiles/profile-1.png" /></a>
+            <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="webroot/img/profile-1.png"/></a>
             <div class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
                 <h6 class="dropdown-header d-flex align-items-center">
-                    <img class="dropdown-user-img" src="assets/img/illustrations/profiles/profile-1.png" />
+                    <img class="dropdown-user-img" src="webroot/img/profile-1.png" />
                     <div class="dropdown-user-details">
-                        <div class="dropdown-user-details-name">Valerie Luna</div>
-                        <div class="dropdown-user-details-email">vluna@aol.com</div>
+                        <div class="dropdown-user-details-name"><div > <?= $this->Identity->get('user_prefername',['class'=>"sidenav-footer-title"]) ?></div></div>
+                        <div class="dropdown-user-details-email"><div > <?= $this->Identity->get('email',['class'=>"sidenav-footer-title"]) ?></div></div>
                     </div>
                 </h6>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#!">
-                    <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
-                    Account
+                    <div class="sidenav-footer">
+                        <div class="sidenav-footer-content">
+                            <div class="sidenav-footer-subtitle">Logged in as:</div>
+                            <div > <?= $this->Identity->get('user_type',['class'=>"sidenav-footer-title"]) ?></div>
+                        </div>
+                    </div>
                 </a>
                 <a class="dropdown-item" href="#!">
-                    <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
-                    Logout
+                    <?= $this->Html->link(
+                        '<i class="dropdown-item-icon"><i data-feather="log-out"></i> Logout',
+                        ['controller' => 'users', 'action' => 'logout'],
+                        ['class' => 'dropdown-item', 'escape' => false]
+                    );?>
                 </a>
             </div>
         </li>
@@ -180,7 +178,6 @@
                             </a>
                             <a class="nav-link" href="<?php  if ($this->Identity->get('user_type')== 'admin'){
                                 echo $this->Url->build('/users/add');
-
                             }
                             ?>"> add new user </a>
 
