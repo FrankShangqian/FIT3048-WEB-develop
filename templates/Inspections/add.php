@@ -31,7 +31,7 @@
                 <legend><?= __('Add Inspection') ?></legend>
                 <div class="row gx-3 mb-3">
                     <div class="col-md-6">
-                        <?php echo $this->Form->control('user_id', ['options' => $users, 'class' => 'form-control col-md-6', 'label' => 'Contractor ID']); ?>
+                        <?php echo $this->Form->control('user_id', ['options' => $users, 'class' => 'form-control col-md-6', 'label' => 'User ID']); ?>
                     </div>
                     <div class="col-md-6">
                         <?php echo $this->Form->control('apartment_id', ['options' => $apartments, 'class' => 'form-control col-md-6', 'label' => 'Apartment ID']); ?>
