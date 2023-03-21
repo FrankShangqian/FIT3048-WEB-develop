@@ -232,14 +232,6 @@
     </div>
     <div id="layoutSidenav_content">
         <main>
-            <header class="py-10 mb-4 bg-gradient-primary-to-secondary">
-                <div class="container-xl px-4">
-                    <div class="text-center">
-                        <h1 class="text-white">Welcome to MONO management page</h1>
-                        <p class="lead mb-0 text-white-50">Now you can start managing MONO.</p>
-                    </div>
-                </div>
-            </header>
             <!-- Main page content-->
             <?= $this->Flash->render() ?>
             <?= $this->fetch('content') ?>
