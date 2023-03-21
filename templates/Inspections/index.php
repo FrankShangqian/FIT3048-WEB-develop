@@ -29,9 +29,9 @@
                         <td><?= $inspection->has('user') ? $this->Html->link($inspection->user->user_id, ['controller' => 'Users', 'action' => 'view', $inspection->user->user_id]) : '' ?></td>
                         <td><?= $inspection->has('apartment') ? $this->Html->link($inspection->apartment->apartment_id, ['controller' => 'Apartments', 'action' => 'view', $inspection->apartment->apartment_id]) : '' ?></td>
                         <td class="actions">
-                            <?= $this->Html->link(__('View'), ['action' => 'view', $inspection->inspection_id]) ?>
-                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $inspection->inspection_id]) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $inspection->inspection_id], ['confirm' => __('Are you sure you want to delete # {0}?', $inspection->inspection_id)]) ?>
+                            <?= $this->Html->link(__('View'), ['action' => 'view', $inspection->inspection_id], ['class' => 'badge bg-yellow-soft text-black']) ?>
+                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $inspection->inspection_id], ['class' => 'badge bg-yellow-soft text-yellow']) ?>
+                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $inspection->inspection_id], ['confirm' => __('Are you sure you want to delete # {0}?', $inspection->inspection_id), 'class' => 'badge bg-red-200 text-red']) ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>

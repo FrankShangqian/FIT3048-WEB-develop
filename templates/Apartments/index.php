@@ -25,9 +25,9 @@
                         <td><?= h($apartment->apartment_address) ?></td>
                         <td><?= h($apartment->apartment_type) ?></td>
                         <td class="actions">
-                            <?= $this->Html->link(__('View'), ['action' => 'view', $apartment->apartment_id]) ?>
-                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $apartment->apartment_id]) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $apartment->apartment_id], ['confirm' => __('Are you sure you want to delete # {0}?', $apartment->apartment_id)]) ?>
+                            <?= $this->Html->link(__('View'), ['action' => 'view', $apartment->apartment_id], ['class' => 'badge bg-yellow-soft text-black']) ?>
+                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $apartment->apartment_id], ['class' => 'badge bg-yellow-soft text-yellow']) ?>
+                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $apartment->apartment_id], ['confirm' => __('Are you sure you want to delete # {0}?', $apartment->apartment_id), 'class' => 'badge bg-red-200 text-red']) ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>
