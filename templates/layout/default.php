@@ -195,7 +195,7 @@
                         <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPagesMenu">
                             <!-- Nested Sidenav Accordion (Pages -> Account)-->
                             <a class="nav-link" href="<?= $this->Url->build('/apartments') ?>">Apartment List</a>
-                            <a class="nav-link" href="<?= $this->Url->build('/apartments/add') ?>">add new apartment</a>
+                            <a class="nav-link" href="<?= $this->Url->build('/apartments/add') ?>">Add apartment</a>
                         </nav>
                     </div>
                     <!-- Sidenav Accordion (Applications)-->
@@ -207,7 +207,8 @@
                     <div class="collapse" id="collapseApps" data-bs-parent="#accordionSidenav">
                         <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavAppsMenu">
                             <a class="nav-link" href="<?= $this->Url->build('/inspections') ?>">Inspection List</a>
-                            <a class="nav-link" href="<?= $this->Url->build('/inspections/add') ?>">add new Inspection</a>
+                            <a class="nav-link" href="<?= $this->Url->build('/inspections/add') ?>">Add Inspection</a>
+                            <a class="nav-link" href="<?= $this->Url->build('/images/add') ?>">Add Inspection Images</a>
                         </nav>
                     </div>
 

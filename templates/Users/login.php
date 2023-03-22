@@ -35,7 +35,6 @@ $this->disableAutoLayout();
                     </fieldset>
                     <?= $this->Form->submit(__('Login'), ['class' => 'btn-new']); ?>
                     <?= $this->Form->end() ?>
-                    <?= $this->Html->link("Create ACCOUNT", ['action' => 'add'], ['class' => 'btn-new']) ?>
                     <a class="btn-new" href="<?= $this->Url->build('/') ?>">Home page</a>
                 </div>
             </div>
